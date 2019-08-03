@@ -1,0 +1,27 @@
+
+<h3 [ngStyle]= "{ 'background-color': age == 18? 'red': 'green'}">{{ title }}</h3>
+
+<div style="padding: 10px;">
+	<table border="1">
+		<tr>
+			<th>Name</th>
+			<th>Price</th>
+			<th>Category</th>
+			<th>Action</th>
+		</tr>
+
+		<tr *ngFor="let product of products"
+			[ngClass] = "[ product.price < 60000 ? 'success': 'danger']">
+			<td>{{ product.name }}</td>
+			<td>{{ product.price }}</td>
+			<td>{{ product.category }}</td>
+			<td>
+				<a [routerLink]="['./details', product.id]">View</a>
+			</td>
+		</tr>
+	</table>
+
+	<hr/>
+	<!-- details of products -->
+	<router-outlet></router-outlet>
+</div>
